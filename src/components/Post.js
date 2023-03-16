@@ -27,7 +27,7 @@ const Post = () => {
     }
     const HandledeletePost = () => {
         dispatch(DeletePost({ postid }))
-        window.location.reload()
+        // window.location.reload()
         window.alert("Post Deleted")
     }
     return (
@@ -54,8 +54,7 @@ const Post = () => {
                                 <div className="card-body">
                                     {/* <h4 className="card-title">{data.title.length>15 ? `${data.title.slice(0,15)}...` : data.title}</h4> */}
                                     <h4 className="card-title">{post.title}</h4>
-                                    {
-                                        edit ? (<>
+                                    {  edit ? (<>
                                             <div className="form-floating">
                                                 <textarea className="form-control"
                                                     value={textBody}
@@ -72,7 +71,7 @@ const Post = () => {
                                                 }} 
                                                 >Save</button>
                                                 <button className="btn btn-danger ms-4"
-                                                onClick={() => dispatch(() => setEdit({edit:false,body:""}))}
+                                                onClick={() => dispatch(setEdit({edit:false,body:""}))}
                                                 >Cancel</button>
                                             </div>
                                         </>) : (
