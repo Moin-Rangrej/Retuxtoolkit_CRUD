@@ -1,11 +1,13 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
+// fetch Post from API By prticular postid
 export const getPost = createAsyncThunk("post/getPost",
         async({postid}) =>{
             return await fetch(`https://jsonplaceholder.typicode.com/posts/${postid}`)
             .then(response => response.json())
 })
 
+// Delete Post from API By prticular postid
 export const DeletePost = createAsyncThunk("post/deletePost",
     async(postid) => {
         return await fetch(`https://jsonplaceholder.typicode.com/posts/${postid}`,{
@@ -15,6 +17,8 @@ export const DeletePost = createAsyncThunk("post/deletePost",
     }   
 )
 
+// Createpost on random 101 postID
+// accept with title and body In post method
 export const createPost = createAsyncThunk('post/createPost',
     async({values}) =>{
         return await fetch(`https://jsonplaceholder.typicode.com/posts`,{
@@ -28,9 +32,12 @@ export const createPost = createAsyncThunk('post/createPost',
                 body: values.body,
             })
         }).then(response => response.json())
+        
         }
     )
 
+
+// Update post body on Postid giving by User
 export const updatePost = createAsyncThunk('post/updatePost',
         async({postid,title,body}) =>{
             return await fetch(`https://jsonplaceholder.typicode.com/posts/${postid}`,{
